@@ -52,7 +52,8 @@
     border: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
+    /* Allow top-bar tooltips to escape via clip-path workaround */
     height: 80vh;
     /* Fixed height for internal scrolling */
     max-height: 800px;
@@ -71,6 +72,7 @@
     flex-direction: column;
     border-bottom: 1px solid #e0e0e0;
     position: relative;
+    overflow: visible;
 }
 
 /* Traffic Lights (Window Controls) */
@@ -249,7 +251,7 @@
 /* Rich Tooltip Styles */
 .chrome-tab-tooltip {
     position: absolute;
-    top: calc(100% + 5px);
+    bottom: calc(100% + 8px);
     left: 50%;
     transform: translateX(-50%);
     background: #ffffff;
