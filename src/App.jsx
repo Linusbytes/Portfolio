@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 import Landing from './components/Landing'
 import ThemeToggle from './components/ThemeToggle'
 
-import { Analytics } from '@vercel/analytics/react'
+// Analytics removed - not using Vercel hosting
 import { useState, useEffect } from 'react'
 import { Fade } from 'react-awesome-reveal'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
@@ -75,7 +75,7 @@ function App() {
         </div>
 
       </div>
-      <Analytics />
+
     </div>
   )
 }
