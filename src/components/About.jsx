@@ -22,10 +22,13 @@ const About = ({ theme }) => {
                         ></video>
                     </div>
                     <p>
-                        I am a highly motivated individual, always looking for opportunities to level up my experience, especially in engineering.
+                        I am a highly motivated individual, always looking for learning opportunities, especially in engineering.
                     </p>
                     <p>
-                        I find myself understanding new subjects constantly while anchoring myself in strong fundamentals. Feel free to <span className="contact-word-container">
+                        In my free time, I am a Formula 1 fan and a loyal supporter of <span className="f1-link">Mercedes-AMG Petronas F1 Team</span>. I also love listening to podcasts and going for runs.
+                    </p>
+                    <p>
+                        Feel free to <span className="contact-word-container">
                             <span className="contact-word-flipper">
                                 <span className="contact-word-front">contact</span>
                                 <span className="contact-word-back">
@@ -35,9 +38,6 @@ const About = ({ theme }) => {
                                 </span>
                             </span>
                         </span> me to find out more about my thoughts and motivations behind my journey.
-                    </p>
-                    <p>
-                        In my free time, I am a Formula 1 fan and a loyal supporter of <span className="f1-link">Mercedes-AMG Petronas F1 Team</span>. I also love listening to podcasts and going for runs.
                     </p>
                 </div>
             </div>
