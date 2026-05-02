@@ -22,9 +22,6 @@ const About = ({ theme }) => {
                         ></video>
                     </div>
                     <p>
-                        I am actively sharpening my systems thinking mindset to make better architectural decisions during development and leverage AI more productively.
-                    </p>
-                    <p>
                         In my pursuit of becoming a polymath, I find myself understanding new subjects constantly while anchoring myself in strong fundamentals. Feel free to <span className="contact-word-container">
                             <span className="contact-word-flipper">
                                 <span className="contact-word-front">contact</span>
