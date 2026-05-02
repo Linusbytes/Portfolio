@@ -1,7 +1,7 @@
 #intro {
     width: 100%;
-    font-size: 50px;
-    margin-bottom: 20px;
+    font-size: 45px;
+    margin-bottom: 18px;
     transition: all .2s ease-in-out;
 }
 
@@ -12,7 +12,7 @@
 .description {
     display: flex;
     flex-direction: column;
-    font-size: 45px;
+    font-size: 40px;
     color: var(--text-secondary);
     transition: all .2s ease-in-out;
 }
@@ -21,7 +21,7 @@
     display: flex;
     margin-top: 3px;
     transition: all .2s ease-in-out;
-    font-size: 40px;
+    font-size: 36px;
     color: var(--text-primary);
 }
 
@@ -33,11 +33,11 @@
 @media only screen and (max-width: 1400px) {
     #intro {
         width: 100%;
-        font-size: 35px;
+        font-size: 31px;
     }
 
     .description {
-        font-size: 25px;
+        font-size: 22px;
     }
 }
 

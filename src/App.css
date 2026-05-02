@@ -14,7 +14,7 @@
     flex: 0 0 35%;
     /* Increased from 30% to prevent text wrapping */
     padding-left: 8%;
-    padding-top: 10vh;
+    padding-top: 8vh;
     box-sizing: border-box;
 }
 
@@ -25,7 +25,7 @@
     padding-left: 0;
     /* Minimize gap from sidebar */
     padding-right: 3%;
-    padding-top: 10vh;
+    padding-top: 8vh;
     /* Align with .left-container padding-top */
     display: flex;
     flex-direction: column;
@@ -54,7 +54,7 @@
 
 .section-header {
     display: flex;
-    padding-bottom: 60px;
+    padding-bottom: 50px;
 }
 
 .section-header::after {
@@ -63,18 +63,18 @@
 }
 
 p {
-    font-size: 25px;
+    font-size: 22px;
     letter-spacing: 0.25px;
     /* Refined for better readability/harmony */
 }
 
 .section-header h1 {
-    font-size: 143px;
-    /* 1.4x of original 102px */
+    font-size: 128px;
+    /* Scaled down ~10% */
     font-weight: 350;
     /* Sophisticated light weight */
     letter-spacing: -2px;
-    /* Adjusted for 1.4x scale */
+    /* Adjusted for scale */
     line-height: 1.0;
     color: var(--text-primary);
     margin: 0;
@@ -90,12 +90,12 @@ p {
     }
 
     .section-container p {
-        font-size: 21px;
+        font-size: 19px;
     }
 
     .section-header h1 {
-        font-size: 112px;
-        /* 1.4x of 80px */
+        font-size: 100px;
+        /* Scaled down ~10% */
         font-weight: 350;
         letter-spacing: -1.5px;
     }
@@ -113,12 +113,12 @@ p {
     }
 
     .section-container p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .section-header h1 {
-        font-size: 95px;
-        /* 1.4x of 68px */
+        font-size: 85px;
+        /* Scaled down ~10% */
         font-weight: 350;
     }
 
@@ -136,12 +136,12 @@ p {
     }
 
     .section-container p {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .section-header h1 {
-        font-size: 78px;
-        /* 1.4x of 56px */
+        font-size: 70px;
+        /* Scaled down ~10% */
         font-weight: 350;
     }
 
