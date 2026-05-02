@@ -22,6 +22,9 @@ const About = ({ theme }) => {
                         ></video>
                     </div>
                     <p>
+                        I am a highly motivated individual, always looking for opportunities to level up my experience, especially in engineering.
+                    </p>
+                    <p>
                         I find myself understanding new subjects constantly while anchoring myself in strong fundamentals. Feel free to <span className="contact-word-container">
                             <span className="contact-word-flipper">
                                 <span className="contact-word-front">contact</span>
