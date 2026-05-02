@@ -288,11 +288,27 @@
     opacity: 0;
 }
 
-/* Hover tooltip for desktop */
-.chrome-tab:hover .chrome-tab-tooltip {
+/* Portal-based hover tooltip (rendered to document.body) */
+.chrome-tab-tooltip-portal {
+    background: #ffffff;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 260px;
     display: flex;
-    animation: tooltipFade 0.15s 0.3s forwards;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Google Sans Flex', sans-serif;
+    text-align: left;
+    line-height: 1.4;
+    animation: tooltipFade 0.15s 0.2s forwards;
     opacity: 0;
+}
+
+[data-theme='dark'] .chrome-tab-tooltip-portal {
+    background: #292a2d;
+    border-color: #3c4043;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes tooltipFade {
