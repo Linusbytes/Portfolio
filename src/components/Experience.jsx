@@ -4,6 +4,15 @@ import { useMediaQuery } from "react-responsive";
 import "../styles/Experience.css";
 import { IoArrowBack, IoArrowForward, IoRefresh, IoHome } from "react-icons/io5";
 
+// Asset imports (required for production builds)
+import schneiderLogo from "../assets/schneider electric logo.png";
+import armyLogo from "../assets/Singapore Army logo.png";
+import formationPatch from "../assets/formation patch.JPG";
+import bmtSarges from "../assets/bmt sarges.JPG";
+import notATankee from "../assets/not a tankee.JPG";
+import sectPic from "../assets/sect pic.JPG";
+import hunterImg from "../assets/hunter.jpg";
+
 const Experience = ({ setSection }) => {
     // Current "Tab" state
     const [activeTab, setActiveTab] = useState("schneider");
@@ -36,7 +45,7 @@ const Experience = ({ setSection }) => {
             id: "schneider",
             tabTitle: "Schneider Electric",
             title: "Schneider Electric",
-            logo: "/src/assets/schneider electric logo.png",
+            logo: schneiderLogo,
             url: "https://schneider-electric.com/about",
             role: "Quality and Industrial Performance Intern",
             duration: "January 2026 - July 2026",
@@ -58,7 +67,7 @@ const Experience = ({ setSection }) => {
             id: "armour",
             tabTitle: "Armour",
             title: "Armour Vocation",
-            logo: "/src/assets/Singapore Army logo.png",
+            logo: armyLogo,
             url: "https://singapore-army.com/about",
             role: "Platoon Sergeant",
             duration: "January 2024 - November 2025",
@@ -70,11 +79,11 @@ const Experience = ({ setSection }) => {
                 "In Charge of **NDP Traffic Operations** for road closure - directly deescalated and managed injuries after a severe traffic collision, successfully minimised delays for **200+** buses fetching all the students after the show"
             ],
             images: [
-                "src/assets/formation patch.JPG",
-                "src/assets/bmt sarges.JPG",
-                "src/assets/not a tankee.JPG",
-                "src/assets/sect pic.JPG",
-                "src/assets/hunter.jpg",
+                formationPatch,
+                bmtSarges,
+                notATankee,
+                sectPic,
+                hunterImg,
             ],
             tooltip: {
                 title: "Singapore Army",
