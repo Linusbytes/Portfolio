@@ -1,0 +1,307 @@
+/* =========================================
+   SKILLS SECTION STYLES
+   ========================================= */
+
+.skills-section {
+    position: relative;
+    padding: 0;
+    min-height: 80vh;
+    font-family: 'Google Sans Flex', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reusing global section-header styles */
+.skills-section .section-header {
+    margin-bottom: 0px;
+    /* Reduced gap container */
+    padding-bottom: 55px;
+    /* Override global 60px padding */
+}
+
+.skills-section .section-header h1 {
+    margin-bottom: 0;
+    /* Remove default h1 margin */
+}
+
+/* =========================================
+   FILTER BAR (Top)
+   ========================================= */
+
+.skills-filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.skills-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
+    background: #f0f0f0;
+    /* Default neutral background */
+    padding: 8px 16px;
+    border-radius: 999px;
+    /* Pill shape */
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #4b4b4b;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.skills-filter-btn:hover {
+    background: #e0e0e0;
+    color: #202124;
+}
+
+.skills-filter-btn.active {
+    background: #202124;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skills-filter-count {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.skills-filter-btn.active .skills-filter-count {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* =========================================
+   GRID LAYOUT
+   ========================================= */
+
+.skills-content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+/* =========================================
+   SKILL CARDS (Grounded / Notion-like)
+   ========================================= */
+
+.skill-card {
+    display: flex;
+    align-items: center;
+    padding: 24px 32px;
+    /* Less horizontal padding, more focused */
+    background: #ffffff;
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+    cursor: default;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+}
+
+.skill-card:hover {
+    background: #ffffff;
+    border-color: #d2d2d2;
+    transform: scale(1.08);
+    /* Increased reaction */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06), 0 4px 8px rgba(0, 0, 0, 0.04);
+    z-index: 2;
+    /* Pop over others if they overlap slightly */
+}
+
+.skill-icon {
+    font-size: 36px;
+    /* Larger icon */
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c4043;
+    transition: transform 0.3s ease;
+    min-width: 36px;
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.skill-custom-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.skill-name {
+    font-size: 20px;
+    /* Larger font size */
+    font-weight: 500;
+    color: #202124;
+    letter-spacing: -0.02em;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media only screen and (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .skill-card {
+        padding: 16px 24px;
+        height: auto;
+    }
+
+    .skill-name {
+        font-size: 18px;
+    }
+
+    .skills-filter-bar {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .skills-filter-btn {
+        flex-shrink: 0;
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+   DARK MODE
+   ========================================= */
+
+[data-theme='dark'] .skill-card {
+    background: #1e1e1e;
+    border-color: #3c4043;
+}
+
+[data-theme='dark'] .skill-card:hover {
+    background: #28292a;
+    border-color: #5f6368;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .skill-name {
+    color: #e8eaed;
+}
+
+[data-theme='dark'] .skill-icon {
+    color: #dadce0;
+}
+
+[data-theme='dark'] .skills-filter-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: #bdc1c6;
+}
+
+[data-theme='dark'] .skills-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+[data-theme='dark'] .skills-filter-btn.active {
+    background: #e8eaed;
+    color: #202124;
+}
+
+[data-theme='dark'] .skills-filter-count {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .skills-filter-btn.active .skills-filter-count {
+    background: rgba(0, 0, 0, 0.1);
+    color: #202124;
+}
+
+/* =========================================
+   CATEGORY ICON POPUP
+   ========================================= */
+
+.skills-filter-bar {
+    position: relative;
+}
+
+.category-popup {
+    position: absolute;
+    transform: translateX(-50%) translateY(-100%);
+    margin-top: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.category-popup-icon {
+    font-size: 48px;
+    color: #202124;
+    animation: iconFloatIn 0.3s ease-out forwards;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.category-popup.exit .category-popup-icon {
+    animation: iconFloatOut 0.2s ease-in forwards;
+}
+
+@keyframes iconFloatIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes iconFloatOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-5px);
+    }
+}
+
+/* Dark mode */
+[data-theme='dark'] .category-popup-icon {
+    color: #e8eaed;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}

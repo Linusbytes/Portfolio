@@ -1,0 +1,290 @@
+#about {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-container {
+    width: 100%;
+    position: relative;
+    border-radius: 15px;
+}
+
+.about-image-wrapper {
+    float: right;
+    width: 280px;
+    /* Fixed width for consistent wrapping */
+    margin-left: 40px;
+    margin-bottom: 20px;
+    aspect-ratio: 3/4;
+    border-radius: 10px;
+    overflow: hidden;
+
+    /* Animation: Pop In */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.8s;
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 30% 50%;
+    transform: scale(1.55);
+    /* Increased from 1.35 to match dark mode size */
+    border: none;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+[data-theme='dark'] .about-image {
+    /* Vignette removed as per user request */
+    filter: brightness(0.85);
+    /* Reduce glare */
+    transform: scale(0.85);
+    /* Reduced from 1.0 to make it smaller as requested */
+    object-position: center 30%;
+    /* Shift content down to align with light mode */
+}
+
+.about-text {
+    width: 100%;
+}
+
+.about-text p {
+    font-size: 23px;
+    /* Slightly smaller than Home section */
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.f1-link {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+
+    /* Text Erase Effect */
+    background: linear-gradient(to right, transparent 50%, #00bca9 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    /* Green (Right) visible */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: background-position 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.f1-link:hover {
+    background-position: 0 0;
+    /* Slide Left (Transparent) in */
+}
+
+.f1-link::after {
+    content: "🏎️";
+    position: absolute;
+    left: -10%;
+    top: 50%;
+    /* Center vertically */
+    opacity: 0;
+    font-size: 20px;
+    pointer-events: none;
+    transition: none;
+    color: initial;
+    /* Fix transparency inheritance */
+    z-index: 10;
+}
+
+.f1-link::before {
+    content: "💨";
+    position: absolute;
+    left: -17%;
+    top: 55%;
+    /* Slightly lower than car */
+    opacity: 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: none;
+    color: initial;
+    z-index: 9;
+    /* Behind car */
+}
+
+.f1-link:hover::after {
+    animation: car-drive 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.f1-link:hover::before {
+    animation: smoke-trail 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes car-drive {
+    0% {
+        left: -10%;
+        opacity: 1;
+        /* Face Right (flipped), Center Vertical */
+        transform: translateY(-50%) scale(0.8) scaleX(-1);
+    }
+
+    5% {
+        /* "Launch" effect - Lean back */
+        transform: translateY(-50%) scale(0.8) scaleX(-1) skewX(10deg);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+        /* Lean forward into speed */
+        transform: translateY(-50%) scale(1.2) scaleX(-1) skewX(-20deg);
+    }
+}
+
+@keyframes smoke-trail {
+    0% {
+        left: -17%;
+        /* Start behind car */
+        opacity: 0;
+        transform: translateY(-50%) scale(0.5) scaleX(-1);
+    }
+
+    10% {
+        opacity: 0.8;
+        /* Smoke appears */
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        left: 92%;
+        /* End behind car */
+        opacity: 0;
+        transform: translateY(-50%) scale(1.5) scaleX(-1);
+        /* Smoke expands */
+    }
+}
+
+.highlight {
+    color: var(--highlight);
+    font-weight: bold;
+}
+
+/* Contact Word Flip Effect */
+.contact-word-container {
+    perspective: 1000px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 1.4em;
+    /* Match line height */
+    width: 90px;
+    cursor: pointer;
+    margin: 0 4px;
+    vertical-align: middle;
+    /* Aligned with text baseline */
+    display: inline-block;
+    transform: translateY(-1px);
+}
+
+.contact-word-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    display: block;
+    /* Ensure transform applies */
+}
+
+.contact-word-container:hover .contact-word-flipper {
+    transform: rotateX(180deg);
+}
+
+.contact-word-front,
+.contact-word-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.contact-word-front {
+    z-index: 2;
+    transform: rotateX(0deg);
+    font-weight: 700;
+    color: var(--highlight);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+[data-theme='dark'] .contact-word-front {
+    font-weight: 800;
+    /* Extra bold for dark mode */
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-word-back {
+    transform: rotateX(180deg);
+    background: transparent;
+}
+
+.contact-word-back a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0077b5 !important;
+    /* LinkedIn Blue */
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.contact-word-back a:hover,
+.contact-word-back a:visited,
+.contact-word-back a:active {
+    color: #0077b5 !important;
+}
+
+.contact-linkedin-icon {
+    font-size: 40px !important;
+    /* Increased size */
+    transition: transform 0.3s ease;
+}
+
+@media only screen and (max-width: 600px) {
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        font-size: 5px;
+    }
+
+    .about-image-wrapper {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

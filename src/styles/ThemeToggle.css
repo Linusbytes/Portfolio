@@ -1,0 +1,60 @@
+.theme-toggle-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60px;
+    /* Clickable corner size */
+    height: 60px;
+    z-index: 10000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease;
+    background: transparent;
+}
+
+.toggle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle backing for visibility */
+    padding: 10px;
+    border-radius: 0 0 0 12px;
+    backdrop-filter: blur(4px);
+    color: var(--text-primary);
+}
+
+.theme-toggle-container.faded {
+    opacity: 0;
+}
+
+.theme-toggle-container.faded:hover {
+    opacity: 1;
+    /* Helpful to see it again if aiming */
+}
+
+.toggle-text {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    /* Position to the left of the 60px container center/icon */
+    transform: translateY(-50%);
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 0;
+    border: none;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* User asked for instruction */
+.theme-toggle-container:not(.faded) .toggle-text {
+    display: block;
+}

@@ -1,0 +1,1166 @@
+/* =========================================
+   CHROME BROWSER STYLES (Minimalist Light B&W)
+   ========================================= */
+
+.experience-container {
+    transition: all 0.3s ease;
+}
+
+/* Full Screen Overrides */
+/* Floating Window Mode (formerly Full Screen) */
+.full-screen-window {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95vw !important;
+    height: 90vh !important;
+    max-width: 1500px !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    z-index: 9999;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.5),
+        0 30px 60px -30px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Backdrop for Floating Window */
+.full-screen-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9998;
+    animation: fadeIn 0.3s ease;
+}
+
+.browser-window-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 25px auto 0 auto;
+    /* Aligned with Sidebar Text */
+    background: #ffffff;
+    /* Pure White */
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    /* Softer shadow for light mode */
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 80vh;
+    /* Fixed height for internal scrolling */
+    max-height: 800px;
+    min-height: 500px;
+    font-family: 'Google Sans Flex', sans-serif;
+    position: relative;
+}
+
+
+
+.chrome-top-bar {
+    background: #f3f3f3;
+    /* Mild Gray Background */
+    padding: 8px 8px 0 8px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+/* Traffic Lights (Window Controls) */
+.window-controls-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 85px;
+    background: #f3f3f3;
+    z-index: 20;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 8px; /* Adjusted to account for new relative wrapper */
+    padding-left: 8px; /* Reduced from 16px since chrome-top-bar already has 8px left padding */
+    box-sizing: border-box;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+    /* Slightly wider gap for better clickability */
+}
+
+.light {
+    width: 15px;
+    /* 1.25x of 12px */
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    /* For pseudo-elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 8px;
+}
+
+.light.red {
+    background: #ff5f56;
+    border: 1px solid #e0443e;
+}
+
+.light.yellow {
+    background: #ffbd2e;
+    border: 1px solid #dea123;
+}
+
+.light.green {
+    background: #27c93f;
+    border: 1px solid #1aab29;
+}
+
+/* Inactive State */
+.light::before {
+    content: '';
+    opacity: 0;
+    transition: opacity 0.1s;
+}
+
+/* Hover State - mimics macOS showing symbols on hover of the GROUP */
+.traffic-lights:hover .light.red::before {
+    content: '×';
+    opacity: 1;
+    font-size: 12px;
+    top: -0.5px;
+    position: relative;
+}
+
+.traffic-lights:hover .light.yellow::before {
+    content: '−';
+    opacity: 1;
+    font-size: 12px;
+    top: -1px;
+    position: relative;
+}
+
+.traffic-lights:hover .light.green::before {
+    content: '+';
+    opacity: 1;
+    font-size: 12px;
+    top: -1px;
+    position: relative;
+}
+
+.light:hover {
+    opacity: 1;
+}
+
+.light.disabled {
+    opacity: 0.2 !important;
+    cursor: default;
+}
+
+.light.disabled::before {
+    display: none;
+}
+
+/* Restored Tab Definitions */
+.chrome-tabs-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    /* No gap for dividers to touch seamlessly */
+    padding-left: 85px;
+    /* Shifted right for 1.25x circles */
+    /* Extreme nudge left */
+    padding-right: 5px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+}
+
+.chrome-tabs-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.chrome-tab {
+    background: transparent;
+    color: #5f6368;
+    padding: 8px 23px;
+    /* Move text away from tab edges */
+    border-radius: 12px 12px 0 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.1s;
+    user-select: none;
+    flex: 0 1 auto;
+    max-width: 220px;
+    min-width: fit-content;
+}
+
+/* Vertical Divider for Inactive Tabs */
+.chrome-tab::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: #aeb1b6;
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+/* Hide divider if SELF is hovered/active OR if NEXT sibling is hovered/active */
+.chrome-tab:hover::after,
+.chrome-tab.active::after,
+.chrome-tab:has(+ .chrome-tab:hover)::after,
+.chrome-tab:has(+ .chrome-tab.active)::after {
+    opacity: 0;
+}
+
+.chrome-tab:hover {
+    background: #e8e8e8;
+    color: #202124;
+}
+
+.chrome-tab.active {
+    background: #ffffff;
+    color: #202124;
+    z-index: 10;
+    margin-bottom: -1px;
+    padding-bottom: 9px;
+}
+
+/* Rich Tooltip Styles */
+.chrome-tab-tooltip {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 260px;
+    z-index: 9999;
+    cursor: default;
+    pointer-events: none;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Google Sans Flex', sans-serif;
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Fix for last tab tooltip being cut off */
+.chrome-tab:last-of-type .chrome-tab-tooltip,
+.chrome-tab:nth-last-of-type(2) .chrome-tab-tooltip {
+    left: auto;
+    right: 0;
+    transform: none;
+}
+
+.chrome-tab.active-tooltip {
+    z-index: 1001; /* Ensure tab and its tooltip float above everything */
+}
+
+.chrome-tab.active-tooltip .chrome-tab-tooltip {
+    display: flex;
+    animation: tooltipFade 0.1s 0.1s forwards; /* Reduced delay for active click */
+    opacity: 0;
+}
+
+@keyframes tooltipFade {
+    to {
+        opacity: 1;
+    }
+}
+
+.tooltip-content {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.tooltip-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #202124;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tooltip-url {
+    font-size: 12px;
+    color: #5f6368;
+}
+
+.tooltip-footer {
+    padding: 8px 16px;
+    background: #f8f9fa;
+    color: #5f6368;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Close button */
+.tab-close {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: -14px;
+    opacity: 0.6;
+    transition: opacity 0.2s, background 0.2s;
+    color: #5f6368;
+}
+
+.chrome-tab:hover .tab-close,
+.chrome-tab.active .tab-close {
+    opacity: 1;
+}
+
+.tab-close:hover {
+    background: #ccc;
+    color: #000;
+}
+
+.loading-website {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+.chrome-new-tab {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    position: relative;
+    /* For tooltip */
+}
+
+.chrome-new-tab:hover::after {
+    content: "Looking ahead...";
+    position: absolute;
+    top: 36px;
+    /* Below the button */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: #ffffff;
+    color: #333333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'Google Sans Flex', sans-serif;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.chrome-new-tab:hover {
+    background: #f0f0f0;
+    /* Matches .nav-icon:hover */
+    color: #000;
+}
+
+[data-theme='dark'] .chrome-new-tab:hover {
+    background: #3c4043 !important;
+    /* Matches .nav-icon:hover in dark mode */
+    color: #ffffff !important;
+}
+
+.chrome-nav-bar {
+    background: #ffffff;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #e0e0e0;
+    margin: 0 -8px;
+    /* extend to full width */
+}
+
+.nav-controls {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-icon {
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    transition: color 0.2s, background 0.2s;
+    position: relative;
+    /* For tooltip */
+}
+
+.nav-icon:hover::after {
+    content: attr(aria-label);
+    /* Use the aria-label as content */
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: #ffffff;
+    color: #333333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'Google Sans Flex', sans-serif;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+}
+
+/* Fix for first button (Back) tooltip being clipped on the left */
+.nav-controls .nav-icon:first-child:hover::after {
+    left: 0;
+    transform: none;
+}
+
+.nav-icon:hover {
+    background: #f0f0f0;
+    color: #000;
+}
+
+.window-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.omnibox {
+    flex: 1;
+    background: #f1f3f4;
+    border-radius: 20px;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid transparent;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.omnibox:hover {
+    background: #e8eaed;
+    border-color: #dcdcdc;
+}
+
+.omnibox:focus-within {
+    background: #fff;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.secure-lock {
+    font-size: 12px;
+    color: #555;
+}
+
+.url-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #000;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    background: #eee;
+    border-radius: 50%;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.browser-content {
+    flex: 1;
+    background: #ffffff;
+    /* Content matches window */
+    color: #000000;
+    overflow-y: auto;
+    position: relative;
+    padding: 0;
+}
+
+/* Simulated Website Styles */
+.website-container {
+    padding: 100px 160px;
+    /* Massive breathing room for document text */
+    max-width: 1200px;
+    /* Slightly wider to accommodate large padding */
+    margin: 0 auto;
+    font-family: 'Google Sans Flex', sans-serif;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.website-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.website-logo {
+    height: 80px;
+    /* Increased size */
+    width: auto;
+    margin-bottom: 5px;
+    /* Reduced gap */
+    display: block;
+}
+
+.website-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #000;
+    /* Deep Black */
+    margin-bottom: 10px;
+    letter-spacing: 0px;
+}
+
+.website-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #555;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.website-time {
+    position: relative;
+    /* Removed cursor: help to avoid question mark */
+}
+
+.website-time[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    /* Below the text */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: #ffffff;
+    color: #333333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'Google Sans Flex', sans-serif;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.1s ease-in-out;
+    margin-top: 4px;
+}
+
+.website-role {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Lighter Grey */
+
+.website-section {
+    margin-bottom: 50px;
+}
+
+.website-section h3 {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+/* Loading Dots */
+.loading-dots {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+}
+
+.dot.blue {
+    background: #4285F4;
+    animation-delay: 0s;
+}
+
+.dot.red {
+    background: #DB4437;
+    animation-delay: 0.1s;
+}
+
+.dot.yellow {
+    background: #F4B400;
+    animation-delay: 0.2s;
+}
+
+.dot.green {
+    background: #0F9D58;
+    animation-delay: 0.3s;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-8px);
+    }
+}
+
+.website-list {
+    list-style: none;
+    padding: 0;
+}
+
+.website-list li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333;
+    /* Dark Grey for readablity */
+    position: relative;
+    padding-left: 20px;
+}
+
+.website-list li::before {
+    content: "→";
+    color: #000;
+    position: absolute;
+    left: 0;
+    font-weight: 400;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .website-container {
+        padding: 20px;
+    }
+
+    .website-title {
+        font-size: 24px;
+    }
+    
+    .website-subtitle {
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .website-section h3 {
+        font-size: 13px;
+    }
+
+    .website-list li {
+        font-size: 14px;
+    }
+
+    .chrome-tabs-container {
+        overflow-x: auto;
+    }
+
+    .chrome-tab {
+        padding: 6px 12px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .tab-close {
+        width: 16px;
+        height: 16px;
+        font-size: 14px;
+        margin-right: -8px;
+    }
+
+    .omnibox, .window-actions {
+        display: none;
+    }
+
+    .chrome-tab-tooltip {
+        display: none !important;
+    }
+}
+
+/* =========================================
+   SCROLL BARS (Webkit) - Light
+   ========================================= */
+.browser-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.browser-content::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+.browser-content::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.browser-content::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+/* Gallery / Image Placeholders */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-placeholder {
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.gallery-placeholder:hover {
+    background: #e8e8e8;
+    border-color: #999;
+    color: #666;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+/* =========================================
+   DARK THEME OVERRIDES
+   ========================================= */
+
+[data-theme='dark'] .browser-window-container {
+    background: #202124 !important;
+    border-color: #3c4043 !important;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='dark'] .chrome-top-bar {
+    background: #292a2d !important;
+    border-bottom-color: #3c4043 !important;
+}
+
+[data-theme='dark'] .window-controls-overlay {
+    background: #292a2d !important;
+}
+
+[data-theme='dark'] .chrome-tab {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme='dark'] .chrome-tab::after {
+    background-color: #5f6368 !important;
+}
+
+[data-theme='dark'] .chrome-tab:hover {
+    background: #35363a !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .chrome-tab.active {
+    background: #202124 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .chrome-tab-tooltip {
+    background: #292a2d !important;
+    border-color: #3c4043 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme='dark'] .tooltip-title {
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .tooltip-url,
+[data-theme='dark'] .tooltip-footer {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme='dark'] .tooltip-content {
+    border-bottom-color: #3c4043 !important;
+}
+
+[data-theme='dark'] .tooltip-footer {
+    background: #202124 !important;
+}
+
+[data-theme='dark'] .chrome-nav-bar {
+    background: #202124 !important;
+    border-top-color: #3c4043 !important;
+}
+
+[data-theme='dark'] .nav-icon {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme='dark'] .nav-icon:hover {
+    background: #3c4043 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .omnibox {
+    background: #292a2d !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .omnibox:hover {
+    background: #35363a !important;
+}
+
+[data-theme='dark'] .omnibox:focus-within {
+    background: #202124 !important;
+    border-color: #8ab4f8 !important;
+}
+
+[data-theme='dark'] .secure-lock {
+    color: #8ab4f8 !important;
+}
+
+[data-theme='dark'] .url-text {
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .profile-icon {
+    background: #3c4043 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .browser-content {
+    background: #202124 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .website-header {
+    border-bottom-color: #3c4043 !important;
+}
+
+[data-theme='dark'] .website-title {
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] .website-subtitle,
+[data-theme='dark'] .website-section h3 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme='dark'] .website-role {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+[data-theme='dark'] .website-list li {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme='dark'] .website-list li::before {
+    color: #8ab4f8 !important;
+}
+
+[data-theme='dark'] .gallery-placeholder {
+    background: #292a2d !important;
+    border-color: #3c4043 !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-theme='dark'] .gallery-placeholder:hover {
+    background: #35363a !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+[data-theme='dark'] .gallery-image {
+    border-color: #3c4043 !important;
+}
+
+[data-theme='dark'] .browser-content::-webkit-scrollbar-track {
+    background: #202124 !important;
+}
+
+[data-theme='dark'] .browser-content::-webkit-scrollbar-thumb {
+    background: #3c4043 !important;
+}
+
+[data-theme='dark'] .browser-content::-webkit-scrollbar-thumb:hover {
+    background: #5f6368 !important;
+}
+
+/* =========================================
+   TUTORIAL POPUP (NOTION-STYLE)
+   ========================================= */
+
+.tutorial-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.tutorial-popup {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    width: 90%;
+    max-width: 420px;
+    height: 340px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    font-family: 'Google Sans Flex', sans-serif;
+    transform: translateY(20px);
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpFade {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.tutorial-icon {
+    font-size: 32px;
+    margin-bottom: -8px;
+}
+
+.tutorial-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tutorial-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #202124;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.tutorial-text {
+    font-size: 15px;
+    color: #5f6368;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.tutorial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.tutorial-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.tutorial-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.tutorial-dot.active {
+    background: #202124;
+    transform: scale(1.2);
+}
+
+.tutorial-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.tutorial-btn-secondary {
+    background: transparent;
+    border: none;
+    color: #5f6368;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+.tutorial-btn-secondary:hover {
+    background: #f1f3f4;
+    color: #202124;
+}
+
+.tutorial-btn-primary {
+    background: #202124;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.1s;
+    font-family: 'Google Sans Flex', sans-serif;
+}
+
+.tutorial-btn-primary:hover {
+    background: #000000;
+}
+
+.tutorial-btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Dark Theme Overrides for Tutorial */
+[data-theme='dark'] .tutorial-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme='dark'] .tutorial-popup {
+    background: #292a2d;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+[data-theme='dark'] .tutorial-title {
+    color: #e8eaed;
+}
+
+[data-theme='dark'] .tutorial-text {
+    color: #9aa0a6;
+}
+
+[data-theme='dark'] .tutorial-dot {
+    background: #5f6368;
+}
+
+[data-theme='dark'] .tutorial-dot.active {
+    background: #e8eaed;
+}
+
+[data-theme='dark'] .tutorial-btn-secondary {
+    color: #9aa0a6;
+}
+
+[data-theme='dark'] .tutorial-btn-secondary:hover {
+    background: #3c4043;
+    color: #e8eaed;
+}
+
+[data-theme='dark'] .tutorial-btn-primary {
+    background: #e8eaed;
+    color: #202124;
+}
+
+[data-theme='dark'] .tutorial-btn-primary:hover {
+    background: #ffffff;
+}

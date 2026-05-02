@@ -1,0 +1,147 @@
+#spotify {
+  display: flex;
+  /* flex-direction: column; */
+  /* background-color: aliceblue; */
+  /* justify-content: space-around; */
+  justify-content: space-between;
+}
+
+#spotify p {
+  font-weight: bold;
+  color: var(--text-secondary)
+}
+
+
+
+.spotify-other-container {
+  display: flex;
+  /* justify-content: space-between; */
+  /* background-color: aliceblue; */
+}
+
+.recently-played-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-tracks-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.track {
+  margin-bottom: 15px;
+}
+
+.now-playing-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wave {
+  width: 5px;
+  height: 25px;
+  background: linear-gradient(45deg, black, var(--highlight));
+  margin: 3px;
+  animation: wave 1s linear infinite;
+  border-radius: 25px;
+}
+
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.wave:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.wave:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.wave:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.wave:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.wave:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.wave:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+
+  #spotify {
+    gap: 15px;
+  }
+
+  .now-playing-track {
+    width: 100%;
+    height: 240px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #spotify {
+    flex-direction: column;
+  }
+
+  .wave {
+    margin: 2px;
+  }
+}
+
+.quote {
+  font-size: 32px !important;
+  font-style: oblique 6deg;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+
+.quote-author {
+  font-size: 15px;
+  font-style: normal;
+}
+
+.home-container {
+  margin-bottom: 120px;
+}
+
+.home-container p {
+  font-size: 25px;
+  line-height: 1.6;
+}

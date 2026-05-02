@@ -1,0 +1,58 @@
+#intro {
+    width: 100%;
+    font-size: 50px;
+    margin-bottom: 20px;
+    transition: all .2s ease-in-out;
+}
+
+.roles {
+    color: var(--highlight);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    font-size: 45px;
+    color: var(--text-secondary);
+    transition: all .2s ease-in-out;
+}
+
+.bio {
+    display: flex;
+    margin-top: 3px;
+    transition: all .2s ease-in-out;
+    font-size: 40px;
+    color: var(--text-primary);
+}
+
+.name {
+    color: var(--highlight);
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1400px) {
+    #intro {
+        width: 100%;
+        font-size: 35px;
+    }
+
+    .description {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #intro {
+        width: 100%;
+        font-size: 30px; /* Reduced from default */
+    }
+
+    .description {
+        font-size: 20px; /* Reduced to fit words on single line */
+    }
+
+    .bio {
+        font-size: 18px; /* Reduced to fit words on single line */
+        margin-top: 5px;
+    }
+}
