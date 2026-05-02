@@ -286,6 +286,13 @@
     opacity: 0;
 }
 
+/* Hover tooltip for desktop */
+.chrome-tab:hover .chrome-tab-tooltip {
+    display: flex;
+    animation: tooltipFade 0.15s 0.3s forwards;
+    opacity: 0;
+}
+
 @keyframes tooltipFade {
     to {
         opacity: 1;
@@ -1006,14 +1013,13 @@
 .tutorial-popup {
     background: #ffffff;
     border-radius: 12px;
-    padding: 32px;
+    padding: 24px 28px;
     width: 90%;
-    max-width: 420px;
-    height: 340px;
+    max-width: 400px;
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     font-family: 'Google Sans Flex', sans-serif;
     transform: translateY(20px);
     animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;

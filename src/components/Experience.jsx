@@ -183,11 +183,6 @@ const Experience = ({ setSection }) => {
             text: "Switch between tabs to view different roles. You can also drag and drop to reorder them.",
             icon: "👆"
         },
-        ...(isMobile ? [] : [{
-            title: "Double-Click for Details",
-            text: "Double-click on any tab to reveal a detailed tooltip with more information.",
-            icon: "🖱️"
-        }]),
         {
             title: "Window Controls",
             text: "Toggle between the MacOS-inspired traffic light buttons to resize the window.",
