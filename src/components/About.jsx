@@ -22,7 +22,7 @@ const About = ({ theme }) => {
                         ></video>
                     </div>
                     <p>
-                        In my pursuit of becoming a polymath, I find myself understanding new subjects constantly while anchoring myself in strong fundamentals. Feel free to <span className="contact-word-container">
+                        I find myself understanding new subjects constantly while anchoring myself in strong fundamentals. Feel free to <span className="contact-word-container">
                             <span className="contact-word-flipper">
                                 <span className="contact-word-front">contact</span>
                                 <span className="contact-word-back">
