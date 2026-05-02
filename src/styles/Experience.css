@@ -53,7 +53,7 @@
     display: flex;
     flex-direction: column;
     overflow: visible;
-    /* Allow top-bar tooltips to escape via clip-path workaround */
+    /* clip-path allows tooltips to escape above while clipping content */
     height: 80vh;
     /* Fixed height for internal scrolling */
     max-height: 800px;
@@ -186,7 +186,8 @@
     /* Shifted right for 1.25x circles */
     /* Extreme nudge left */
     padding-right: 5px;
-    overflow-x: auto;
+    overflow-x: visible;
+    overflow-y: visible;
     scrollbar-width: none; /* Firefox */
 }
 
@@ -309,6 +310,13 @@
     background: #292a2d;
     border-color: #3c4043;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover tooltip for desktop */
+.chrome-tab:hover .chrome-tab-tooltip {
+    display: flex;
+    animation: tooltipFade 0.15s 0.3s forwards;
+    opacity: 0;
 }
 
 @keyframes tooltipFade {

@@ -32,10 +32,6 @@ const Experience = ({ setSection }) => {
     // Tooltip State
     const [visibleTooltip, setVisibleTooltip] = useState(null);
 
-    // Hover Tooltip State (for desktop)
-    const [hoveredTab, setHoveredTab] = useState(null);
-    const [tooltipPos, setTooltipPos] = useState({ top: 0, left: 0 });
-
     // Tutorial State
     const [showTutorial, setShowTutorial] = useState(true);
     const [tutorialStep, setTutorialStep] = useState(0);
@@ -273,20 +269,6 @@ const Experience = ({ setSection }) => {
         setVisibleTooltip(visibleTooltip === tabKey ? null : tabKey);
     };
 
-    const handleTabMouseEnter = (e, tabKey) => {
-        if (isMobile) return;
-        const rect = e.currentTarget.getBoundingClientRect();
-        setTooltipPos({
-            top: rect.top - 8,
-            left: rect.left + rect.width / 2,
-        });
-        setHoveredTab(tabKey);
-    };
-
-    const handleTabMouseLeave = () => {
-        setHoveredTab(null);
-    };
-
     const windowContent = (
         <>
 
@@ -336,14 +318,25 @@ const Experience = ({ setSection }) => {
                                     e.stopPropagation();
                                     handleTabDoubleClick(tabKey);
                                 }}
-                                onMouseEnter={(e) => handleTabMouseEnter(e, tabKey)}
-                                onMouseLeave={handleTabMouseLeave}
+                                onMouseEnter={(e) => e.stopPropagation()}
                                 draggable
                                 onDragStart={(e) => onDragStart(e, index)}
                                 onDragOver={(e) => onDragOver(e, index)}
                                 onDragEnd={onDragEnd}
                             >
                                 <span className="tab-title">{experienceData[tabKey].tabTitle}</span>
+
+                                {experienceData[tabKey].tooltip && (
+                                    <div className="chrome-tab-tooltip">
+                                        <div className="tooltip-content">
+                                            <div className="tooltip-title">{experienceData[tabKey].tooltip.title}</div>
+                                            <div className="tooltip-url">{experienceData[tabKey].tooltip.url}</div>
+                                        </div>
+                                        <div className="tooltip-footer">
+                                            {experienceData[tabKey].tooltip.memory}
+                                        </div>
+                                    </div>
+                                )}
 
                                 {(tabKey !== 'schneider' && tabKey !== 'armour') && (
                                     <span
@@ -501,29 +494,6 @@ const Experience = ({ setSection }) => {
     return (
         <div id="experience" className={`experience-container ${isFullScreen ? 'full-screen-mode' : ''}`}>
             {windowContent}
-            {/* Portal tooltip for hover - renders outside overflow containers */}
-            {hoveredTab && experienceData[hoveredTab]?.tooltip && createPortal(
-                <div
-                    className="chrome-tab-tooltip-portal"
-                    style={{
-                        position: 'fixed',
-                        top: tooltipPos.top,
-                        left: tooltipPos.left,
-                        transform: 'translate(-50%, -100%)',
-                        zIndex: 99999,
-                        pointerEvents: 'none',
-                    }}
-                >
-                    <div className="tooltip-content">
-                        <div className="tooltip-title">{experienceData[hoveredTab].tooltip.title}</div>
-                        <div className="tooltip-url">{experienceData[hoveredTab].tooltip.url}</div>
-                    </div>
-                    <div className="tooltip-footer">
-                        {experienceData[hoveredTab].tooltip.memory}
-                    </div>
-                </div>,
-                document.body
-            )}
         </div>
     );
 };
