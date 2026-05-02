@@ -37,7 +37,7 @@ const About = ({ theme }) => {
                         </span> me to find out more about my thoughts and motivations behind my journey.
                     </p>
                     <p>
-                        In my free time, I am a Formula 1 fan and a loyal supporter of the <span className="f1-link">Mercedes-AMG Petronas F1 Team</span>. I also love listening to podcasts and going for runs.
+                        In my free time, I am a Formula 1 fan and a loyal supporter of the <span className="f1-link">Mercedes-AMG Petronas Formula 1 Team</span>. I also love listening to podcasts and going for runs.
                     </p>
                 </div>
             </div>
