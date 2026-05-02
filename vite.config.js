@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/Portfolio/',
   plugins: [react()],
-  assetsInclude: ['**/*.MOV', '**/*.mp4', '**/*.mov']
+  assetsInclude: ['**/*.MOV', '**/*.mp4', '**/*.mov', '**/*.JPG']
 })
