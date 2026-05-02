@@ -22,7 +22,7 @@ const About = ({ theme }) => {
                         ></video>
                     </div>
                     <p>
-                        I am a highly motivated individual, always looking for learning opportunities, especially in engineering.
+                        I am a highly motivated individual, always looking for more learning opportunities.
                     </p>
                     <p>
                         In my free time, I am a Formula 1 fan and a loyal supporter of <span className="f1-link">Mercedes-AMG Petronas F1 Team</span>. I also love listening to podcasts and going for runs.
